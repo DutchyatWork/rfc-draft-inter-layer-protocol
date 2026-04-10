@@ -10,7 +10,7 @@
 #
 ###
 title: "Inter-layer Protocol"
-abbrev: "I-L Protocol"
+abbrev: "I-L-Proto"
 category: std
 
 docname: draft-pinkert-ippm-inter-layer-protocol-latest
@@ -328,18 +328,14 @@ IPv6, UDP, or TCP.
 
 # IANA Considerations
 
-This document requests an IP Protocol number to be assigned by IANA, and An
-extention of the protocol register with a table of Inter-layer Protocol numbers.
+This document requests an IP Protocol number to be assigned by IANA with the
+following properties:
+* keyword: I-L-Proto
+* Protocol: Inter-Layer Protocol
 
-# Disclaimer and Patents
-
-Parts of this RFC contain information about technology that is patented.
-Identified patents at Siemens Mobility are:
-* DE102024204819A1; EP4654562A1; Verfahren zum Erweitern eines Headers eines Datenpakets
-
-Related patents at Siemens Mobility are:
-* WO 2023/030908 Al; DE 10 2021 209 622 A1; Verfahren zum Betreiben einer Eisenbahngleisanlage
-Further patents are pending.
+It also requests the creation of a registry for Inter-Layer Protocol numbers.
+Table 00 of this registry is to be reserved for use with existing IP option
+numbers as listed in the IP Option Numbers registry.
 
 --- back
 
