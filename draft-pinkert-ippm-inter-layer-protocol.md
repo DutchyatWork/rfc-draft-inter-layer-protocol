@@ -10,7 +10,7 @@
 #
 ###
 title: "Inter-layer Protocol"
-abbrev: "ILP"
+abbrev: "I-L Protocol"
 category: std
 
 docname: draft-pinkert-ippm-inter-layer-protocol-latest
