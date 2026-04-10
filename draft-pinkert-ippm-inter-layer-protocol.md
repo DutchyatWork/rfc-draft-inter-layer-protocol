@@ -1,14 +1,4 @@
 ---
-###
-# Don't include "-00" or "-latest" in the filename.
-# Labels in the form draft-<yourname>-<workgroup>-<name>-latest are used by
-# the tools to refer to the current version; see "docname" for example.
-#
-# This template uses kramdown-rfc: https://github.com/cabo/kramdown-rfc
-# You can replace the entire file if you prefer a different format.
-# Change the file extension to match the format (.xml for XML, etc...)
-#
-###
 title: "Inter-layer Protocol"
 abbrev: "I-L-Proto"
 category: std
@@ -19,19 +9,19 @@ number:
 date: 2026
 consensus: true
 v: 3
-area: OPS
-workgroup: IPPM Working Group
+area: "Operations and Management"
+workgroup: "IP Performance Measurement"
 keyword:
  - extension
  - ip header
  - ip option
 venue:
-  group: ippm
-  type: Working Group
-  mail: ippm@ietf.org
-  arch: https://datatracker.ietf.org/wg/ippm/
-  github: DutchyatWork/rfc-draft-inter-layer-protocol.git
-  latest: https://datatracker.ietf.org/doc/draft-pinkert-ippm-inter-layer-protocol/
+  group: "IP Performance Measurement"
+  type: "Working Group"
+  mail: "ippm@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/ippm/"
+  github: "DutchyatWork/rfc-draft-inter-layer-protocol"
+  latest: "https://DutchyatWork.github.io/rfc-draft-inter-layer-protocol/draft-pinkert-ippm-inter-layer-protocol.html"
 
 author:
  -  fullname: Tjeerd J. Pinkert
@@ -42,7 +32,7 @@ author:
     country: Germany
     email: tjeerd.pinkert@siemens.com
     uri: https://www.mobility.siemens.com
- 
+
 normative:
 [RFC791]: Postel, J., "Internet Protocol", STD 5, RFC 791, DOI 10.17487/RFC0791, September 1981, <https://www.rfc-editor.org/info/rfc791>
 [RFC2119]: Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997, <https://www.rfc-editor.org/rfc/rfc2119>.
@@ -184,8 +174,8 @@ Checksum: 16-bit checksum over the inter-layer protocol data unit.
 
 In the figure below an IP header with a UDP packet is depicted.
 
-      0                   1                   2                   3   
-      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
+      0                   1                   2                   3
+      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
      |Version|  IHL  |Type of Service|          Total Length         |   IPv4
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+   IPv4
@@ -217,8 +207,8 @@ Protocol number for the IPv4 Protocol field is 0xFF. The IL protocol types are
 taken as 0xFFE and 0xFFF. Each of these protocols has an own handler. Protocol
 0x11 is the UDP protocol again.
 
-      0                   1                   2                   3   
-      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
+      0                   1                   2                   3
+      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
      |Version|  IHL  |Type of Service|          Total Length         |   IPv4
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+   IPv4
@@ -256,7 +246,7 @@ taken as 0xFFE and 0xFFF. Each of these protocols has an own handler. Protocol
      .                       UDP data octets                         .   UDP
      |                                                               |   UDP
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- 
+
 In the IP header, the protocol type 0xFF hands control for the next layer
 protocol to the inter-layer protocol handler. This handler interprets the first
 block of inter-layer protocol data. It then reads the IP Protocol number from
@@ -309,7 +299,7 @@ the inter-layer protocol data unit.
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
      .               .                                               .
      .               .                                               .
-     .               .                                               . 
+     .               .                                               .
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
      |               |            Checksum           |
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
