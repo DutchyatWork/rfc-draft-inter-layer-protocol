@@ -2,10 +2,10 @@
 
 
 
-IPPM Working Group                                         T. J. Pinkert
+IP Performance Measurement                                 T. J. Pinkert
 Internet-Draft                                     Siemens Mobility GmbH
-Intended status: Standards Track                           10 April 2026
-Expires: 12 October 2026
+Intended status: Standards Track                           21 April 2026
+Expires: 23 October 2026
 
 
                           Inter-layer Protocol
@@ -25,18 +25,18 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://datatracker.ietf.org/doc/draft-pinkert-ippm-inter-layer-
-   protocol/.  Status information for this document may be found at
-   https://datatracker.ietf.org/doc/draft-pinkert-ippm-inter-layer-
-   protocol/.
+   https://DutchyatWork.github.io/rfc-draft-inter-layer-protocol/draft-
+   pinkert-ippm-inter-layer-protocol.html.  Status information for this
+   document may be found at https://datatracker.ietf.org/doc/draft-
+   pinkert-ippm-inter-layer-protocol/.
 
-   Discussion of this document takes place on the ippm Working Group
-   mailing list (mailto:ippm@ietf.org), which is archived at
-   https://datatracker.ietf.org/wg/ippm/.  Subscribe at
-   https://www.ietf.org/mailman/listinfo/ippm/.
+   Discussion of this document takes place on the IP Performance
+   Measurement Working Group mailing list (mailto:ippm@ietf.org), which
+   is archived at https://mailarchive.ietf.org/arch/browse/ippm/.
+   Subscribe at https://www.ietf.org/mailman/listinfo/ippm/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/DutchyatWork/rfc-draft-inter-layer-protocol.git.
+   https://github.com/DutchyatWork/rfc-draft-inter-layer-protocol.
 
 Status of This Memo
 
@@ -53,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 October 2026.
+   This Internet-Draft will expire on 23 October 2026.
 
 Copyright Notice
 
@@ -79,8 +79,7 @@ Table of Contents
    6.  Encoding existing IP options in the inter-layer block.
    7.  Security Considerations
    8.  IANA Considerations
-   9.  Disclaimer and Patents
-   10. Normative References
+   9.  Normative References
    Acknowledgments
    Author's Address
 
@@ -374,18 +373,7 @@ Table of Contents
    and An extention of the protocol register with a table of Inter-layer
    Protocol numbers.
 
-9.  Disclaimer and Patents
-
-   Parts of this RFC contain information about technology that is
-   patented.  Identified patents at Siemens Mobility are: *
-   DE102024204819A1; EP4654562A1; Verfahren zum Erweitern eines Headers
-   eines Datenpakets
-
-   Related patents at Siemens Mobility are: * WO 2023/030908 Al; DE 10
-   2021 209 622 A1; Verfahren zum Betreiben einer Eisenbahngleisanlage
-   Further patents are pending.
-
-10.  Normative References
+9.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
