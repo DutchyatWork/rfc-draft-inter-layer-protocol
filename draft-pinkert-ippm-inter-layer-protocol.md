@@ -321,16 +321,6 @@ IPv6, UDP, or TCP.
 This document requests an IP Protocol number to be assigned by IANA, and An
 extention of the protocol register with a table of Inter-layer Protocol numbers.
 
-# Disclaimer and Patents
-
-Parts of this RFC contain information about technology that is patented.
-Identified patents at Siemens Mobility are:
-* DE102024204819A1; EP4654562A1; Verfahren zum Erweitern eines Headers eines Datenpakets
-
-Related patents at Siemens Mobility are:
-* WO 2023/030908 Al; DE 10 2021 209 622 A1; Verfahren zum Betreiben einer Eisenbahngleisanlage
-Further patents are pending.
-
 --- back
 
 # Acknowledgments
