@@ -1,12 +1,12 @@
 ---
 title: "Inter-layer Protocol"
-abbrev: "I-L Protocol"
+abbrev: "I-L-Proto"
 category: std
 
 docname: draft-pinkert-ippm-inter-layer-protocol-latest
 submissiontype: IETF
 number:
-date: 2026
+date:
 consensus: true
 v: 3
 area: "Operations and Management"
@@ -46,7 +46,7 @@ This document describes an inter-layer protocol, that can be used to insert an
 arbitrary number of headers between the internet protocol (IPv4, IPv6) header
 and a layer four header like the UDP or TCP header. By doing so, it consumes
 part of the space available for IP payload data. It is, in particular, useful
-to extend the space reserved for IP options as defined in the [IPv4 protocol][RFC791].
+to extend the space reserved for IP options as defined in the IPv4 protocol [RFC791].
 
 
 --- middle
@@ -91,7 +91,7 @@ methods.
 
 # Conventions and Definitions
 
-{::boilerplate bcp14-tagged}
+{::boilerplate bcp14-tagged-bcp14}
 
 # Generic properties of an inter-layer protocol in the stack
 
@@ -316,15 +316,20 @@ IPv6, UDP, or TCP.
 
 # IANA Considerations
 
-This document requests an IP Protocol number to be assigned by IANA, and An
-extention of the protocol register with a table of Inter-layer Protocol numbers.
+This document requests an IP Protocol number to be assigned by IANA with the
+following properties:
+* keyword: I-L-Proto
+* Protocol: Inter-Layer Protocol
 
+It also requests the creation of a registry for Inter-Layer Protocol numbers.
+Table 00 of this registry is to be reserved for use with existing IP option
+numbers as listed in the IP Option Numbers registry.
 --- back
 
 # Acknowledgments
 {:numbered="false"}
 
 Tjeerd Pinkert wants to thank Gert Bolz, and Benjamin Schilling for their
-support of the passive network measurements innovation project, and Sascha
+support of the hybrid network measurements innovation project, and Sascha
 Liebscher, Achim Willers, Tobias Grosch, and Jaime Lazaro Calderon for their
 support to make this work possible within Siemens Mobility.
