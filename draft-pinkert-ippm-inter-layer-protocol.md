@@ -6,7 +6,7 @@ category: std
 docname: draft-pinkert-ippm-inter-layer-protocol-latest
 submissiontype: IETF
 number:
-date: 2026
+date:
 consensus: true
 v: 3
 area: "Operations and Management"
@@ -91,7 +91,7 @@ methods.
 
 # Conventions and Definitions
 
-{::boilerplate bcp14-tagged}
+{::boilerplate bcp14-tagged-bcp14}
 
 # Generic properties of an inter-layer protocol in the stack
 
@@ -330,6 +330,6 @@ numbers as listed in the IP Option Numbers registry.
 {:numbered="false"}
 
 Tjeerd Pinkert wants to thank Gert Bolz, and Benjamin Schilling for their
-support of the passive network measurements innovation project, and Sascha
+support of the hybrid network measurements innovation project, and Sascha
 Liebscher, Achim Willers, Tobias Grosch, and Jaime Lazaro Calderon for their
 support to make this work possible within Siemens Mobility.
