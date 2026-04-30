@@ -1050,7 +1050,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">I-L Protocol</td>
+<td class="center">I-L-Proto</td>
 <td class="right">April 2026</td>
 </tr></thead>
 <tfoot><tr>
@@ -1512,8 +1512,13 @@ IPv6, UDP, or TCP.<a href="#section-7-1" class="pilcrow">¶</a></p>
       <h2 id="name-iana-considerations">
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-8-1">This document requests an IP Protocol number to be assigned by IANA, and An
-extention of the protocol register with a table of Inter-layer Protocol numbers.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-8-1">This document requests an IP Protocol number to be assigned by IANA with the
+following properties:
+* keyword: I-L-Proto
+* Protocol: Inter-Layer Protocol<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-8-2">It also requests the creation of a registry for Inter-Layer Protocol numbers.
+Table 00 of this registry is to be reserved for use with existing IP option
+numbers as listed in the IP Option Numbers registry.<a href="#section-8-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-normative-references">

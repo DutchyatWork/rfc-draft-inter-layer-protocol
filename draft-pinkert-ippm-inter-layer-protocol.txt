@@ -369,9 +369,14 @@ Table of Contents
 
 8.  IANA Considerations
 
-   This document requests an IP Protocol number to be assigned by IANA,
-   and An extention of the protocol register with a table of Inter-layer
-   Protocol numbers.
+   This document requests an IP Protocol number to be assigned by IANA
+   with the following properties: * keyword: I-L-Proto * Protocol:
+   Inter-Layer Protocol
+
+   It also requests the creation of a registry for Inter-Layer Protocol
+   numbers.  Table 00 of this registry is to be reserved for use with
+   existing IP option numbers as listed in the IP Option Numbers
+   registry.
 
 9.  Normative References
 
