@@ -13,7 +13,7 @@ This is the working area for the individual Internet-Draft, "Inter-layer Protoco
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/DutchyatWork/rfc-draft-inter-layer-protocol/blob//CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/DutchyatWork/rfc-draft-inter-layer-protocol/blob/main/CONTRIBUTING.md).
 
 The contributing file also has tips on how to make contributions, if you
 don't already know how to do that.
