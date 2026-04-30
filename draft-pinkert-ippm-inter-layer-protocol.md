@@ -34,9 +34,7 @@ author:
     uri: https://www.mobility.siemens.com
 
 normative:
-[RFC791]: Postel, J., "Internet Protocol", STD 5, RFC 791, DOI 10.17487/RFC0791, September 1981, <https://www.rfc-editor.org/info/rfc791>
-[RFC2119]: Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997, <https://www.rfc-editor.org/rfc/rfc2119>.
-[RFC8174]: Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+  RFC791: Postel, J., "Internet Protocol", STD 5, RFC 791, DOI 10.17487/RFC0791, September 1981, <https://www.rfc-editor.org/info/rfc791>.
 
 informative:
 
@@ -48,7 +46,7 @@ This document describes an inter-layer protocol, that can be used to insert an
 arbitrary number of headers between the internet protocol (IPv4, IPv6) header
 and a layer four header like the UDP or TCP header. By doing so, it consumes
 part of the space available for IP payload data. It is, in particular, useful
-to extend the space reserved for IP options as defined in the IPv4 protocol.
+to extend the space reserved for IP options as defined in the [IPv4 protocol][RFC791].
 
 
 --- middle
