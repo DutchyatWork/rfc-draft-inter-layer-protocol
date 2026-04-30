@@ -1212,7 +1212,7 @@ next layer protocol (typically UDP or TCP). It hands back control to the IP
 handler, that invokes the next protocol handler.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">Since the inter-layer protocol is highly related to the lower layer handler,
 another implementation option, is an extension of the lower layer handler, in
-the scope of this document, the IPv4 protocol handler.<a href="#section-1-4" class="pilcrow">¶</a></p>
+the scope of this document, this would be the IPv4 protocol handler.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">One of the goals of the inter-layer protocol, is to open up freely useable
 space / header extension, of the lower layer protocol. This can be flexibly
 used if the lower layer protocol has no, or not enough, flexibility in the
@@ -1225,7 +1225,7 @@ allow for only 9 router IP addresses. In an inter-layer implementation, this
 space can be much larger, e.g., allowing 100 routers to place their addresses
 in the table. Another use case, can be the use of IP options that have a
 native length that extends beyond 10 words. Securing IP option contents by use
-of encryption, or digital signatures, may be such a case. A cyphertext of 40
+of encryption, or digital signatures, may be such a case. A ciphertext of 40
 octets may already be limited for use of state-of-the-art encryption
 methods.<a href="#section-1-6" class="pilcrow">¶</a></p>
 </section>
@@ -1249,9 +1249,10 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <p id="section-3-1">The inter-layer protocol is designated by use of the next protocol number to
 implement a recursive / repetitive block structure between the lower layer
 and upper layer protocol. The entire data structure can, however, not grow
-beyond the boundary set by the upper length of the lower layer protocol. In
-case of the IPv4 protocol that upper limit is 64 kilobytes.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">An inter-layer protocol header needs at least the following to function:<a href="#section-3-2" class="pilcrow">¶</a></p>
+beyond the boundary set by the upper data unit size of the lower layer
+protocol. In case of the IPv4 protocol that upper limit is 64 kilobytes.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">An inter-layer protocol header <span class="bcp14">MUST</span> at least contain the following to
+function:<a href="#section-3-2" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-3-3">
 <li id="section-3-3.1">
           <p id="section-3-3.1.1">A field repeating the lower protocol number,<a href="#section-3-3.1.1" class="pilcrow">¶</a></p>
@@ -1265,7 +1266,7 @@ case of the IPv4 protocol that upper limit is 64 kilobytes.<a href="#section-3-1
           <p id="section-3-3.2.1">A field indicating the length of the inter-layer protocol block<a href="#section-3-3.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3-3.2.2.1">
-              <p id="section-3-3.2.2.1.1">The length includes the header.<a href="#section-3-3.2.2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-3-3.2.2.1.1">The length includes the header of this block.<a href="#section-3-3.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3-3.2.2.2">
               <p id="section-3-3.2.2.2.1">The length can be indicated in bits, octets, or words as is seen fit by
@@ -1277,7 +1278,7 @@ the protocol designer.<a href="#section-3-3.2.2.2.1" class="pilcrow">¶</a></p>
           <p id="section-3-3.3.1">A field indicating the type of contents of the inter-layer data,<a href="#section-3-3.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3-3.3.2.1">
-              <p id="section-3-3.3.2.1.1">In some cases, the type is the user data.<a href="#section-3-3.3.2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-3-3.3.2.1.1">In some cases, the type is the data.<a href="#section-3-3.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3-3.3.2.2">
               <p id="section-3-3.3.2.2.1">In other cases, the type specifies which parser is to be used for the
@@ -1285,19 +1286,22 @@ inter-layer data.<a href="#section-3-3.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
-        <li id="section-3-3.4">
-          <p id="section-3-3.4.1">An (optional) inter-layer user data block,<a href="#section-3-3.4.1" class="pilcrow">¶</a></p>
+      </ol>
+<p id="section-3-4">The following fields COULD be contained:<a href="#section-3-4" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-3-5">
+<li id="section-3-5.1">
+          <p id="section-3-5.1.1">An (optional) inter-layer user data block,<a href="#section-3-5.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li id="section-3-3.5">
-          <p id="section-3-3.5.1">An (optional) Checksum block,<a href="#section-3-3.5.1" class="pilcrow">¶</a></p>
+        <li id="section-3-5.2">
+          <p id="section-3-5.2.1">An (optional) Checksum block,<a href="#section-3-5.2.1" class="pilcrow">¶</a></p>
 </li>
       </ol>
-<p id="section-3-4">In many cases the checksum block can be skipped, since the lower layer
+<p id="section-3-6">In many cases the checksum block can be skipped, since the lower layer
 protocol already includes a checksum over the protocol data unit transported.
 This checksum then includes the data of the inter-layer blocks, which are not
-seen separately from the upper layer protocol data unit.<a href="#section-3-4" class="pilcrow">¶</a></p>
-<p id="section-3-5">The length of the lower layer protocol data unit is the length of the upper
-layer protocol data unit plus the length of all inter-layer protocol blocks.<a href="#section-3-5" class="pilcrow">¶</a></p>
+seen separately from the upper layer protocol data unit.<a href="#section-3-6" class="pilcrow">¶</a></p>
+<p id="section-3-7">The length of the lower layer protocol data unit is the length of the upper
+layer protocol data unit plus the length of all inter-layer protocol blocks.<a href="#section-3-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="inter-layer-protocol-for-ipv4">
@@ -1306,13 +1310,13 @@ layer protocol data unit plus the length of all inter-layer protocol blocks.<a h
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-inter-layer-protocol-for-ip" class="section-name selfRef">Inter-layer protocol for IPv4</a>
       </h2>
 <p id="section-4-1">It is proposed to shape the inter-layer header for the IPv4 protocol as
-follows. A 10-bit inter-layer protocol type allows for 1024 inter-layer protocol
-types. Since it is proposed to reuse the IP option types, 256 of these
-protocol numbers are already taken, still leaving sufficient space for new
-protocol definitions.<a href="#section-4-1" class="pilcrow">¶</a></p>
+follows. A 10-bit inter-layer protocol type allows for 1024 inter-layer
+protocol types. Since it is proposed to reuse the IP option types, 256 of
+these protocol numbers are already taken, still leaving sufficient space for
+new protocol definitions.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <p id="section-4-2">The length is defined in octets, a 16-bit length identifier would allow to use
 the entire IP user data space as inter-layer space. This is not deemed useful.
-A length of 16kbyte, is deemed sufficient. Then 8 bits are left for the IP
+A length of 16 kbyte, is deemed sufficient. Then 8 bits are left for the IP
 Protocol number, needed to jump back from parsing inter-layer protocol blocks
 to the normal protocol stack parsing. A 16-bit checksum, such as used in the
 UDP protocol is the last part of the inter-layer protocol data unit, and is
@@ -1338,13 +1342,38 @@ when only the header is present.<a href="#section-4-3" class="pilcrow">¶</a></p
  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </pre><a href="#section-4-4" class="pilcrow">¶</a>
 </div>
-<p id="section-4-5">IL Protocol type: inter-layer protocol type, designates how to interpret the
-    inter-layer data defined by a separate inter-layer protocol specification.
-Total length: Length of the inter-layer protocol unit in words.
-IP Protocol: IP protocol type of the next IP header part.
-Inter-layer data: inter-layer protocol specific data part defined by a separate
-    inter-layer protocol specification.
-Checksum: 16-bit checksum over the inter-layer protocol data unit.<a href="#section-4-5" class="pilcrow">¶</a></p>
+<p id="section-4-5">IL Protocol type (10 bits):<a href="#section-4-5" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-4-6.1">
+          <p id="section-4-6.1.1">inter-layer protocol type, designates how to interpret the inter-layer data
+defined by a separate inter-layer protocol specification.<a href="#section-4-6.1.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-4-7">Total length (14 bits):<a href="#section-4-7" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-4-8.1">
+          <p id="section-4-8.1.1">Length of the inter-layer protocol unit in words.<a href="#section-4-8.1.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-4-9">IP Protocol (8 bits):<a href="#section-4-9" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-4-10.1">
+          <p id="section-4-10.1.1">IP protocol type of the next IP header part.<a href="#section-4-10.1.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-4-11">Inter-layer data:<a href="#section-4-11" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-4-12.1">
+          <p id="section-4-12.1.1">inter-layer protocol specific data part defined by a separate inter-layer
+protocol specification.<a href="#section-4-12.1.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-4-13">Checksum (16 bits):<a href="#section-4-13" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-4-14.1">
+          <p id="section-4-14.1.1">16-bit checksum over the inter-layer protocol data unit.<a href="#section-4-14.1.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
 </section>
 </div>
 <div id="ipv4-inter-layer-protocol-usage">
@@ -1513,12 +1542,18 @@ IPv6, UDP, or TCP.<a href="#section-7-1" class="pilcrow">¶</a></p>
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
 <p id="section-8-1">This document requests an IP Protocol number to be assigned by IANA with the
-following properties:
-* keyword: I-L-Proto
-* Protocol: Inter-Layer Protocol<a href="#section-8-1" class="pilcrow">¶</a></p>
-<p id="section-8-2">It also requests the creation of a registry for Inter-Layer Protocol numbers.
+following properties:<a href="#section-8-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8-2.1">
+          <p id="section-8-2.1.1">keyword: I-L-Proto<a href="#section-8-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-8-2.2">
+          <p id="section-8-2.2.1">Protocol: Inter-Layer Protocol<a href="#section-8-2.2.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-8-3">It also requests the creation of a registry for Inter-Layer Protocol numbers.
 Table 00 of this registry is to be reserved for use with existing IP option
-numbers as listed in the IP Option Numbers registry.<a href="#section-8-2" class="pilcrow">¶</a></p>
+numbers as listed in the IP Option Numbers registry.<a href="#section-8-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-normative-references">
