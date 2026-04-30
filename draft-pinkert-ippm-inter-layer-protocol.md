@@ -70,7 +70,7 @@ handler, that invokes the next protocol handler.
 
 Since the inter-layer protocol is highly related to the lower layer handler,
 another implementation option, is an extension of the lower layer handler, in
-the scope of this document, the IPv4 protocol handler.
+the scope of this document, this would be the IPv4 protocol handler.
 
 One of the goals of the inter-layer protocol, is to open up freely useable
 space / header extension, of the lower layer protocol. This can be flexibly
@@ -85,7 +85,7 @@ allow for only 9 router IP addresses. In an inter-layer implementation, this
 space can be much larger, e.g., allowing 100 routers to place their addresses
 in the table. Another use case, can be the use of IP options that have a
 native length that extends beyond 10 words. Securing IP option contents by use
-of encryption, or digital signatures, may be such a case. A cyphertext of 40
+of encryption, or digital signatures, may be such a case. A ciphertext of 40
 octets may already be limited for use of state-of-the-art encryption
 methods.
 
@@ -98,23 +98,27 @@ methods.
 The inter-layer protocol is designated by use of the next protocol number to
 implement a recursive / repetitive block structure between the lower layer
 and upper layer protocol. The entire data structure can, however, not grow
-beyond the boundary set by the upper length of the lower layer protocol. In
-case of the IPv4 protocol that upper limit is 64 kilobytes.
+beyond the boundary set by the upper data unit size of the lower layer
+protocol. In case of the IPv4 protocol that upper limit is 64 kilobytes.
 
-An inter-layer protocol header needs at least the following to function:
+An inter-layer protocol header MUST at least contain the following to
+function:
 
 1. A field repeating the lower protocol number,
    - In case of IPv4, the Protocol field
-2. A field indicating the length of the inter-layer protocol block
-   - The length includes the header.
+1. A field indicating the length of the inter-layer protocol block
+   - The length includes the header of this block.
    - The length can be indicated in bits, octets, or words as is seen fit by
      the protocol designer.
-3. A field indicating the type of contents of the inter-layer data,
-   - In some cases, the type is the user data.
+1. A field indicating the type of contents of the inter-layer data,
+   - In some cases, the type is the data.
    - In other cases, the type specifies which parser is to be used for the
      inter-layer data.
-4. An (optional) inter-layer user data block,
-5. An (optional) Checksum block,
+
+The following fields COULD be contained:
+
+1. An (optional) inter-layer user data block,
+1. An (optional) Checksum block,
 
 In many cases the checksum block can be skipped, since the lower layer
 protocol already includes a checksum over the protocol data unit transported.
@@ -128,14 +132,14 @@ layer protocol data unit plus the length of all inter-layer protocol blocks.
 # Inter-layer protocol for IPv4
 
 It is proposed to shape the inter-layer header for the IPv4 protocol as
-follows. A 10-bit inter-layer protocol type allows for 1024 inter-layer protocol
-types. Since it is proposed to reuse the IP option types, 256 of these
-protocol numbers are already taken, still leaving sufficient space for new
-protocol definitions.
+follows. A 10-bit inter-layer protocol type allows for 1024 inter-layer
+protocol types. Since it is proposed to reuse the IP option types, 256 of
+these protocol numbers are already taken, still leaving sufficient space for
+new protocol definitions.
 
 The length is defined in octets, a 16-bit length identifier would allow to use
 the entire IP user data space as inter-layer space. This is not deemed useful.
-A length of 16kbyte, is deemed sufficient. Then 8 bits are left for the IP
+A length of 16 kbyte, is deemed sufficient. Then 8 bits are left for the IP
 Protocol number, needed to jump back from parsing inter-layer protocol blocks
 to the normal protocol stack parsing. A 16-bit checksum, such as used in the
 UDP protocol is the last part of the inter-layer protocol data unit, and is
@@ -160,13 +164,27 @@ when only the header is present.
      |          Checksum             |
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-IL Protocol type: inter-layer protocol type, designates how to interpret the
-    inter-layer data defined by a separate inter-layer protocol specification.
-Total length: Length of the inter-layer protocol unit in words.
-IP Protocol: IP protocol type of the next IP header part.
-Inter-layer data: inter-layer protocol specific data part defined by a separate
-    inter-layer protocol specification.
-Checksum: 16-bit checksum over the inter-layer protocol data unit.
+IL Protocol type (10 bits):
+
+> inter-layer protocol type, designates how to interpret the inter-layer data
+> defined by a separate inter-layer protocol specification.
+
+Total length (14 bits):
+
+> Length of the inter-layer protocol unit in words.
+
+IP Protocol (8 bits):
+
+> IP protocol type of the next IP header part.
+
+Inter-layer data:
+
+> inter-layer protocol specific data part defined by a separate inter-layer
+> protocol specification.
+
+Checksum (16 bits):
+
+>16-bit checksum over the inter-layer protocol data unit.
 
 # IPv4 inter-layer protocol usage.
 
@@ -318,6 +336,7 @@ IPv6, UDP, or TCP.
 
 This document requests an IP Protocol number to be assigned by IANA with the
 following properties:
+
 * keyword: I-L-Proto
 * Protocol: Inter-Layer Protocol
 
