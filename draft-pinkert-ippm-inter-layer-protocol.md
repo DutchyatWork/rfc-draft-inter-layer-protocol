@@ -34,7 +34,7 @@ author:
     uri: https://www.mobility.siemens.com
 
 normative:
-  RFC791: Postel, J., "Internet Protocol", STD 5, RFC 791, DOI 10.17487/RFC0791, September 1981, <https://www.rfc-editor.org/info/rfc791>.
+  RFC791:
 
 informative:
 
